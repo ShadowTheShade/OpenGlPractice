@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <iostream>
+#include <filesystem>
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -12,6 +15,7 @@
 #include "../shaders/stb_image.h"
 
 
+
 //Globals
 const unsigned int SCRN_HEIGHT = 600;
 const unsigned int SCRN_WIDTH = 800;
@@ -19,10 +23,11 @@ const unsigned int SCRN_WIDTH = 800;
 //const char* pwd = fs::current_path().file;
 
 //Shaders
-const char* vertexShaderSource = "OldProjects/TexturePractice/shaders/vertexShader.vs";
-const char* fragmentShaderSource = "OldProjects/TexturePractice/fragmentShader.fs";
+const char* vertexShaderSource = "C:/Personal/Coding/OpenGL/OpenGLTutorial/OpenGLTutorial/shaders/vertexShader.vs";
+const char* fragmentShaderSource = "C:/Personal/Coding/OpenGL/OpenGLTutorial/OpenGLTutorial/shaders/fragmentShader.fs";
 
-float zoom = 0.3f;
+float angle = 0.0f;
+float translate = 0.0f;
 
 //Objects
 float texCoords[] =
@@ -136,7 +141,7 @@ int main()
 	int width, height, nrChannels;
 	stbi_set_flip_vertically_on_load(true); //Flips the image along the y-axis
 
-	unsigned char* data = stbi_load("OldProjects/TexturePractice/images/container.jpg", &width, &height, &nrChannels, 0);
+	unsigned char* data = stbi_load("C:/Personal/Coding/OpenGL/OpenGLTutorial/OpenGLTutorial/images/container.jpg", &width, &height, &nrChannels, 0);
 
 	if (data)
 	{
@@ -160,7 +165,7 @@ int main()
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	data = stbi_load("OldProjects/TexturePractice/images/awesomeface.png", &width, &height, &nrChannels, 0);
+	data = stbi_load("C:/Personal/Coding/OpenGL/OpenGLTutorial/OpenGLTutorial/images/awesomeface.png", &width, &height, &nrChannels, 0);
 
 	if (data)
 	{
@@ -196,7 +201,7 @@ int main()
 	
 
 	float timeValue;
-	//float shiftValue;
+	float shiftValue;
 	//float shapeShift = 0.7f;
 	//ourShader.setFloat("xOffset", 0.0f);
 	while (!glfwWindowShouldClose(window))
@@ -207,7 +212,7 @@ int main()
 		//Inputs
 		processInput(window);
 
-		//shiftValue = (sin(timeValue) / 2.0f);
+		shiftValue = (sin(timeValue * 3) / 4.0f + 0.6f);
 		//vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor");
 		//ourShader.setFloat("xOffset", shiftValue * shapeShift);
 		//ourShader.setFloat("zoom", zoom);
@@ -220,12 +225,13 @@ int main()
 
 
 		glm::mat4 trans = glm::mat4(1.0f);
-
-		//Rotate by matrix trans applied 90 degrees
-		trans = glm::rotate(trans, timeValue, glm::vec3(0.0, 0.0, 1.0));
+		
 		//Scaled by 0.5 in each direction
-		//trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));
-
+		trans = glm::scale(trans, glm::vec3(shiftValue, shiftValue, shiftValue));
+		//Rotate by matrix trans applied zoom degrees
+		trans = glm::rotate(trans, angle, glm::vec3(0.0, 0.0, 1.0));
+		//Translate by matrix trans
+		trans = glm::translate(trans, glm::vec3(translate, shiftValue - 0.6f, 0.0));
 		//Renders
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
@@ -234,9 +240,11 @@ int main()
 
 		ourShader.use();
 
+		
 		//Apply tansform to the shader
 		unsigned int transformLoc = glGetUniformLocation(ourShader.ID, "transform");
 		glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans)); //Convert the matrix so that opengl / glm match
+		
 
 		//lUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
 		glBindVertexArray(VAO); //Must be rebound if we are changing buffers
@@ -274,8 +282,12 @@ void processInput(GLFWwindow* window)
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, true);
 	else if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
-		zoom += 0.001;
+		angle += 0.001;
 	else if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
-		zoom -= 0.001;
+		angle -= 0.001;
+	else if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+		translate += 0.001;
+	else if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+		translate -= 0.001;
 }
 
