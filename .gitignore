@@ -1,0 +1,7 @@
+# Ignore emacs backups
+*~
+*#
+
+# Ignore executables and object files
+*.o
+*.exe

@@ -1,16 +1,18 @@
 #include <stdio.h>
 #include <iostream>
+#include <math.h>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "../shaders/shader.h"
+
 
 //Globals
 const unsigned int SCRN_HEIGHT = 600;
 const unsigned int SCRN_WIDTH = 800;
 
 //Shaders
-const char* vertexShaderSource = "OldProjects/ShaderPractice/shaders/vertexShader.vs";
-const char* fragmentShaderSource = "OldProjects/ShaderPractice/shaders/fragmentShader.fs";
+const char* vertexShaderSource = "../shaders/vertexShader.vs";
+const char* fragmentShaderSource = "../shaders/fragmentShader.fs";
 
 
 //Objects
