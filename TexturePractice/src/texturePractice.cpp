@@ -3,9 +3,6 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include <filesystem>
-namespace fs = std::filesystem;
-
 #include "../shaders/shader.h"
 
 #define STB_IMAGE_IMPLEMENTATION
@@ -19,8 +16,8 @@ const unsigned int SCRN_WIDTH = 800;
 //const char* pwd = fs::current_path().file;
 
 //Shaders
-const char* vertexShaderSource = "OldProjects/TexturePractice/shaders/vertexShader.vs";
-const char* fragmentShaderSource = "OldProjects/TexturePractice/shaders/fragmentShader.fs";
+const char* vertexShaderSource = "/home/Anthony/Coding/cpp/OpenGlPractice/TexturePractice/shaders/vertexShader.vs";
+const char* fragmentShaderSource = "/home/Anthony/Coding/cpp/OpenGlPractice/TexturePractice/shaders/fragmentShader.fs";
 
 float zoom = 0.3f;
 
@@ -139,7 +136,7 @@ int main()
 	int width, height, nrChannels;
 	stbi_set_flip_vertically_on_load(true); //Flips the image along the y-axis
 
-	unsigned char* data = stbi_load("D:/Coding/OpenGl/OpenGlTutorial/images/container.jpg", &width, &height, &nrChannels, 0);
+	unsigned char* data = stbi_load("/home/Anthony/Coding/cpp/OpenGlPractice/TexturePractice/images/container.jpg", &width, &height, &nrChannels, 0);
 
 	if (data)
 	{
@@ -163,7 +160,7 @@ int main()
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	data = stbi_load("D:/Coding/OpenGl/OpenGlTutorial/images/awesomeface.png", &width, &height, &nrChannels, 0);
+	data = stbi_load("/home/Anthony/Coding/cpp/OpenGlPractice/TexturePractice/images/awesomeface.png", &width, &height, &nrChannels, 0);
 
 	if (data)
 	{

@@ -37,11 +37,11 @@ float lastFrame = 0.0;
 //Objects
 
 //Shaders
-const char* vertexLightingShaderSource = "D:/Coding/OpenGL/OpenGlTutorial/shaders/light_cube.vs";
-const char* fragmentLightingShaderSource = "D:/Coding/OpenGL/OpenGlTutorial/shaders/light_cube.fs";
+const char* vertexLightingShaderSource = "/home/Anthony/Coding/cpp/OpenGlPractice/LightingPractice/shaders/light_cube.vs";
+const char* fragmentLightingShaderSource = "/home/Anthony/Coding/cpp/OpenGlPractice/LightingPractice/shaders/light_cube.fs";
 
-const char* vertexCubeShaderSource = "D:/Coding/OpenGL/OpenGlTutorial/shaders/colors.vs";
-const char* fragmentCubeShaderSource = "D:/Coding/OpenGL/OpenGlTutorial/shaders/colors.fs";
+const char* vertexCubeShaderSource = "/home/Anthony/Coding/cpp/OpenGlPractice/LightingPractice/shaders/colors.vs";
+const char* fragmentCubeShaderSource = "/home/Anthony/Coding/cpp/OpenGlPractice/LightingPractice/shaders/colors.fs";
 
 float fov;
 float lastX, lastY;
@@ -186,7 +186,7 @@ int main()
 	int texWidth, texHeight, nrChannels;
 	stbi_set_flip_vertically_on_load(true);
 
-	unsigned char* data = stbi_load("D:/Coding/OpenGl/OpenGlTutorial/images/Shadow.jpg", &texWidth, &texHeight, &nrChannels, 0);
+	unsigned char* data = stbi_load("/home/Anthony/Coding/cpp/OpenGlPractice/LightingPractice/images/Shadow.jpg", &texWidth, &texHeight, &nrChannels, 0);
 	
 	if (data)
 	{
@@ -216,7 +216,7 @@ int main()
 	lightShader.setMat4("model", model);
 	cubeShader.setMat4("model", model);
 
-    //View
+	//View
 	glm::mat4 view = glm::mat4(1.0f);
 	lightShader.setMat4("view", view);
 	cubeShader.setMat4("view", view);

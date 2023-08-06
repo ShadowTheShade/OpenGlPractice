@@ -23,8 +23,8 @@ float lastFrame = 0.0f;
 
 
 //Shaders
-const char* vertexShaderSource = "D:/Coding/OpenGL/OpenGlTutorial/shaders/vertexShader.vs";
-const char* fragmentShaderSource = "D:/Coding/OpenGL/OpenGlTutorial/shaders/fragmentShader.fs";
+const char* vertexShaderSource = "/home/Anthony/Coding/cpp/OpenGlPractice/WorldPractice/shaders/vertexShader.vs";
+const char* fragmentShaderSource = "/home/Anthony/Coding/cpp/OpenGlPractice/WorldPractice/shaders/fragmentShader.fs";
 
 //Trackers
 bool firstMouse = true;
@@ -190,7 +190,7 @@ int main()
 	int width, height, nrChannels;
 	stbi_set_flip_vertically_on_load(true);
 
-	unsigned char* data = stbi_load("D:/Coding/OpenGL/OpenGlTutorial/images/container.jpg", &width, &height, &nrChannels, 0);
+	unsigned char* data = stbi_load("/home/Anthony/Coding/cpp/OpenGlPractice/WorldPractice/images/container.jpg", &width, &height, &nrChannels, 0);
 
 	if (data)
 	{
@@ -214,7 +214,7 @@ int main()
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	data = stbi_load("D:/Coding/OpenGL/OpenGlTutorial/images/awesomeface.png", &width, &height, &nrChannels, 0);
+	data = stbi_load("/home/Anthony/Coding/cpp/OpenGlPractice/WorldPractice/images/awesomeface.png", &width, &height, &nrChannels, 0);
 
 	if (data)
 	{

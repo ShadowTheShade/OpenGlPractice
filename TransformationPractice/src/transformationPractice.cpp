@@ -8,13 +8,12 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <streambuf>
 
 #include "../shaders/shader.h"
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "../shaders/stb_image.h"
-
-
 
 //Globals
 const unsigned int SCRN_HEIGHT = 600;
@@ -23,8 +22,8 @@ const unsigned int SCRN_WIDTH = 800;
 //const char* pwd = fs::current_path().file;
 
 //Shaders
-const char* vertexShaderSource = "/home/Anthony/Coding/cpp/OpenGlPractice/transformationPractice/shaders/vertexShader.vs";
-const char* fragmentShaderSource = "/home/Anthony/Coding/cpp/OpenGlPractice/transformationPractice/shaders/fragmentShader.fs";
+const char* vertexShaderSource = "/home/Anthony/Coding/cpp/OpenGlPractice/TransformationPractice/shaders/vertexShader.vs";
+const char* fragmentShaderSource = "/home/Anthony/Coding/cpp/OpenGlPractice/TransformationPractice/shaders/fragmentShader.fs";
 
 float angle = 0.0f;
 float translate = 0.0f;
@@ -141,7 +140,7 @@ int main()
 	int width, height, nrChannels;
 	stbi_set_flip_vertically_on_load(true); //Flips the image along the y-axis
 
-	unsigned char* data = stbi_load("/home/Anthony/Coding/cpp/OpenGlPractice/transformationPractice/images/container.jpg", &width, &height, &nrChannels, 0);
+	unsigned char* data = stbi_load("/home/Anthony/Coding/cpp/OpenGlPractice/TransformationPractice/images/container.jpg", &width, &height, &nrChannels, 0);
 
 	if (data)
 	{
@@ -165,7 +164,7 @@ int main()
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	data = stbi_load("/home/Anthony/Coding/cpp/OpenGlPractice/transformationPractice/images/awesomeface.png", &width, &height, &nrChannels, 0);
+	data = stbi_load("/home/Anthony/Coding/cpp/OpenGlPractice/TransformationPractice/images/awesomeface.png", &width, &height, &nrChannels, 0);
 
 	if (data)
 	{

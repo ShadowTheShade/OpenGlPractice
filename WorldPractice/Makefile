@@ -19,7 +19,7 @@ GLAD = /usr/include/glad/glad.c
 TARGET = game
 
 # Main file
-MAIN = src/shaderPractice
+MAIN = src/worldPractice
 
 SHAD = shaders/shader
 

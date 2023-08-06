@@ -19,16 +19,22 @@ GLAD = /usr/include/glad/glad.c
 TARGET = game
 
 # Main file
-MAIN = src/shaderPractice
+MAIN = src/summary
 
 SHAD = shaders/shader
+
+CAM = headers/camera
+
+INP = headers/inputs
+
+SHAPES = headers/shapes
 
 all: $(TARGET).exe
 
 $(TARGET).exe: $(GLAD) $(MAIN).o 
 	$(CC) $(CFLAGS) -o $(TARGET).exe $(GLAD) $(MAIN).o
 
-$(MAIN).o : $(MAIN).cpp $(SHAD).h $(SHADERS)/fragmentShader.fs $(SHADERS)/vertexShader.vs
+$(MAIN).o : $(MAIN).cpp $(SHAD).h $(CAM).h $(INP).h $(SHAPES).h $(SHADERS)/*.fs $(SHADERS)/*.vs 
 	$(CC) -c $(MAIN).cpp -o $(MAIN).o
 
 clean:

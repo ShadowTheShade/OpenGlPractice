@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <iostream>
 #include <math.h>
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+
 #include "../shaders/shader.h"
 
 
@@ -11,8 +13,8 @@ const unsigned int SCRN_HEIGHT = 600;
 const unsigned int SCRN_WIDTH = 800;
 
 //Shaders
-const char* vertexShaderSource = "../shaders/vertexShader.vs";
-const char* fragmentShaderSource = "../shaders/fragmentShader.fs";
+const char* vertexShaderSource = "/home/Anthony/Coding/cpp/OpenGlPractice/ShaderPractice/shaders/vertexShader.vs";
+const char* fragmentShaderSource = "/home/Anthony/Coding/cpp/OpenGlPractice/ShaderPractice/shaders/fragmentShader.fs";
 
 
 //Objects

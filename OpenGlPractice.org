@@ -1,0 +1,13 @@
+Planning and Organization of [[https://learnopengl.com/][Learn OpenGL Tutorial]]
+
+* Completed
+
+* Ideas
+
+* Tasks
+
+** Sandbox
+- Make axis
+  - [ ] X-Axis
+  - [ ] Y-Axis
+  - [ ] Z-Axis

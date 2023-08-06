@@ -6,10 +6,13 @@ CC = clang++
 CFLAGS  = -lGL -lglfw
 # The build target 
 SRC = src/
-TARGET = partOne
+
+TARGET = game
+
 GLAD = /usr/include/glad/glad.c
+
 all: $(TARGET).exe
-$(TARGET).exe: $(SRC)$(TARGET).cpp $(GLAD)
-	$(CC) $(CFLAGS) -o $(TARGET).exe $(GLAD) $(SRC)$(TARGET).cpp
+$(TARGET).exe: $(SRC)partOne.cpp $(GLAD)
+	$(CC) $(CFLAGS) -o $(TARGET).exe $(GLAD) $(SRC)partOne.cpp
 clean:
 	$(RM) $(TARGET).exe
