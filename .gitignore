@@ -5,3 +5,5 @@
 # Ignore executables and object files
 *.o
 *.exe
+
+*.org

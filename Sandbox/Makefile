@@ -19,7 +19,7 @@ GLAD = /usr/include/glad/glad.c
 TARGET = game
 
 # Main file
-MAIN = src/lighting
+MAIN = src/sandbox
 
 SHAD = shaders/shader
 
