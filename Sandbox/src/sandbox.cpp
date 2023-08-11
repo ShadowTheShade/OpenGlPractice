@@ -143,7 +143,7 @@ int main()
 	glEnableVertexAttribArray(0);
 
 	//Normals
-//	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 11 * sizeof(float), (void*)(8 * sizeof(float)));
+	//glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 11 * sizeof(float), (void*)(8 * sizeof(float)));
 	//glEnableVertexAttribArray(1);
 
 	//Colours
@@ -242,6 +242,9 @@ int main()
 
 		//Transformations
 
+		// Camera controlls light position
+		lightPos = camera.Position + glm::vec3(5.0f) * camera.Front;
+		
 		//Renders
 		glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -263,28 +266,28 @@ int main()
 		projection = glm::perspective(glm::radians(camera.Zoom), (float)SCRN_WIDTH / (float)SCRN_HEIGHT, 0.1f, 1000.0f);
 		cubeShader.setMat4("projection", projection);
 
-
 		//Binding textures
 		//glActiveTexture(GL_TEXTURE0);
 		//glBindTexture(GL_TEXTURE_2D, texture1);
 
-
-
 		// X-axis
-		
-
 		cubeShader.setVec3("objectColor", 1.0f, 0.0f, 0.0f);
-		Shapes::makeCube(cubeShader, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f), glm::vec3(100.0f, 0.5f, 0.5f), 0.0f);
-		cubeShader.setVec3("objectColor", 0.0f, 1.0f, 0.0f);
-		Shapes::makeCube(cubeShader, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f), glm::vec3(0.5f, 100.0f, 0.5f), 0.0f);
+		Shapes::makeCube(cubeShader, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f), glm::vec3(100.0f, 0.05f, 0.05f), 0.0f);
+		// Y-axis
+                cubeShader.setVec3("objectColor", 0.0f, 1.0f, 0.0f);
+		Shapes::makeCube(cubeShader, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f), glm::vec3(0.05f, 100.0f, 0.05f), 0.0f);
+		// Z-axis
 		cubeShader.setVec3("objectColor", 0.0f, 0.0f, 1.0f);
-		Shapes::makeCube(cubeShader, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f), glm::vec3(0.5f, 0.5f, 100.0f), 0.0f);
+		Shapes::makeCube(cubeShader, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f), glm::vec3(0.05f, 0.05f, 100.0f), 0.0f);
 
+		//Floor
+		cubeShader.setVec3("objectColor", 0.1f, 0.1f, 0.1f);
+		Shapes::makeCube(cubeShader, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f), glm::vec3(100.0f, 0.01f, 100.0f), 0.0f);
 
 		//Draw
 		//for(int i = 0;i < 6;i++)
 		//Shapes::makeCube(mainShader, glm::vec3(cos(glm::radians(60.0 * i)), sin(glm::radians(60.0 * i)), (float)i), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(1.0f));
-	  
+	  C
 		
 		lightShader.use();
 		lightShader.setMat4("projection", projection);
